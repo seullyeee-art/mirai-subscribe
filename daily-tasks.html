@@ -4,9 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>일일 작업</title>
+<link rel="stylesheet" href="../shared/styles.css">
 <style>
-  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
-
   * {
     margin: 0; padding: 0;
     box-sizing: border-box;
@@ -40,13 +39,13 @@
     font-family: 'Pretendard Variable', -apple-system, BlinkMacSystemFont, sans-serif;
     min-height: 100dvh;
     background: var(--bg-normal);
-    display: flex; justify-content: center;
     overflow-x: hidden;
     color: var(--label-normal);
   }
 
   .phone-frame {
     width: 100%; max-width: 960px;
+    margin: 0 auto;
     min-height: 100dvh;
     background:
       radial-gradient(ellipse 500px 500px at 30% 5%, rgba(20, 195, 145, 0.18) 0%, transparent 60%),
@@ -218,6 +217,10 @@
 </head>
 <body>
 
+<div class="app">
+
+<mirai-sidebar></mirai-sidebar>
+
 <div class="phone-frame">
 
   <!-- Header -->
@@ -341,7 +344,9 @@
   </div>
 
 </div>
+</div>
 
+<script src="../shared/components.js" defer></script>
 <script>
   let completedCount = 0;
   const totalTasks = 8;
