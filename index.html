@@ -35,6 +35,7 @@
     --primary-rgb:20,195,145;
     --bg-rgb:27,28,30;
     --max-gold:#F6C66B;      /* max.png 골드 에셋 매칭 — 데코 스파클 전용 */
+    --max-amber:#F4B23E;     /* MAX 뱃지 그라데이션 (amber→orange) */
   }
 
   body{ overflow-x:hidden; }
@@ -147,30 +148,6 @@
       linear-gradient(155deg, rgba(112,115,124,0.12), rgba(112,115,124,0.04));
     border:1px solid rgba(var(--primary-rgb),0.20);
   }
-  .plan-head{
-    display:flex; align-items:center; gap:10px;
-    position:relative; z-index:2;
-  }
-  .plan-badge{ width:46px; height:32px; object-fit:contain; flex-shrink:0;
-    filter:drop-shadow(0 4px 12px rgba(0,0,0,0.4)); }
-  .plan-name{
-    font-size:24px; font-weight:900; letter-spacing:-0.02em;
-    color:var(--label-strong);
-  }
-  .plan-tag{
-    margin:8px 0 18px;
-    font-size:13px; font-weight:500; color:var(--label-alternative);
-    position:relative; z-index:2;
-  }
-
-  /* sparkles (광택감) — MAX 골드 에셋 매칭 */
-  .sparkle{
-    position:absolute; width:4px; height:4px; border-radius:50%;
-    background:var(--max-gold);
-    box-shadow:0 0 6px var(--max-gold), 0 0 12px rgba(246,198,107,0.4);
-    animation:sparkle 2.2s ease-in-out infinite; pointer-events:none; z-index:2;
-  }
-  @keyframes sparkle{ 0%,100%{ opacity:0; transform:scale(0.5);} 50%{ opacity:1; transform:scale(1.2);} }
 
   /* ═══ 무료 vs MAX 비교표 (비인터랙티브 — 혜택 강조용) ═══ */
   .cmp{
@@ -181,8 +158,7 @@
   /* MAX 컬럼 하이라이트 배경 */
   .cmp-maxbg{
     position:absolute; top:-2px; bottom:-2px; right:-6px; width:56px;
-    background:linear-gradient(180deg, rgba(var(--primary-rgb),0.14), rgba(var(--primary-rgb),0.05));
-    border:1px solid rgba(var(--primary-rgb),0.28);
+    background:linear-gradient(180deg, rgba(var(--primary-rgb),0.18), rgba(var(--primary-rgb),0.06));
     border-radius:14px; z-index:0; pointer-events:none;
   }
   .cmp-h{ font-size:11px; font-weight:800; text-align:center; padding-bottom:12px; position:relative; z-index:1; letter-spacing:0.02em; }
@@ -206,6 +182,16 @@
   .cmp-free svg{ color:var(--label-alternative); }
   .cmp-max svg{ color:var(--primary-normal); }
   .cmp-dash{ display:inline-block; width:12px; height:2px; border-radius:2px; background:var(--label-assistive); }
+  /* MAX 뱃지 (듀오링고 SUPER 스타일 — 골드 그라데이션 필) */
+  .max-badge{
+    display:inline-flex; align-items:center; justify-content:center;
+    padding:3px 9px; border-radius:8px;
+    font-size:11px; font-weight:900; font-style:italic; letter-spacing:0.04em;
+    color:#fff;
+    background:linear-gradient(135deg, var(--max-amber), var(--accent-red-orange));
+    box-shadow:0 3px 10px rgba(255,123,46,0.45);
+    text-shadow:0 1px 1.5px rgba(120,60,0,0.4);
+  }
 
   /* ═══ PRICING OPTIONS (연간 / 월간) ═══ */
   .opts{
@@ -347,22 +333,13 @@
 
     <!-- ═══ MAX PLAN ═══ -->
     <section class="plan ai d2">
-      <span class="sparkle" style="top:18px; right:22px;"></span>
-      <span class="sparkle" style="top:40px; right:54px; animation-delay:.5s;"></span>
-      <span class="sparkle" style="top:30px; right:90px; animation-delay:1s;"></span>
-
-      <div class="plan-head">
-        <img class="plan-badge" src="images/max.png" alt="MAX">
-        <span class="plan-name">MAX</span>
-      </div>
-      <p class="plan-tag" data-ko="모든 한도를 풀어주는 단 하나의 멤버십" data-en="The one membership that unlocks every limit">모든 한도를 풀어주는 단 하나의 멤버십</p>
 
       <div class="cmp">
         <span class="cmp-maxbg"></span>
 
         <span class="cmp-h cmp-h-spacer"></span>
         <span class="cmp-h cmp-free" data-ko="무료" data-en="Free">무료</span>
-        <span class="cmp-h cmp-max">MAX</span>
+        <span class="cmp-h cmp-max"><span class="max-badge">MAX</span></span>
 
         <span class="cmp-label"><span class="cmp-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><span data-ko="무제한 대화 (성능 최적화)" data-en="Unlimited Chat (Performance Optimized)">무제한 대화 (성능 최적화)</span></span>
         <span class="cmp-cell cmp-free"><span class="cmp-dash"></span></span>
