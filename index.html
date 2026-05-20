@@ -4,10 +4,34 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>MIRAI 구독 · MAX</title>
-<link rel="stylesheet" href="../shared/styles.css">
 <style>
-  /* 페이지 헬퍼 — primary(#14C391) 글로우용 rgb 튜플 (shared 토큰 파생) */
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+
+  /* ── 리셋 + 베이스 (shared 인라인 — 배포 self-contained) ── */
+  *{ margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  html,body{
+    font-family:'Pretendard JP','Pretendard Variable JP',-apple-system,BlinkMacSystemFont,sans-serif;
+    font-feature-settings:'ss10' 1;
+    background:var(--bg-normal); color:var(--label-normal);
+    min-height:100dvh; -webkit-font-smoothing:antialiased; letter-spacing:0.0057em;
+  }
+  img,svg{ display:block; max-width:100%; }
+  button{ font:inherit; color:inherit; background:none; border:none; cursor:pointer; }
+  a{ color:inherit; text-decoration:none; }
+
+  /* ── MIRAI 디자인 토큰 (shared/styles.css 인라인) + 페이지 헬퍼 ── */
   :root{
+    --primary-normal:#14C391; --primary-strong:#14C092; --primary-heavy:#13BB8F;
+    --label-normal:#F7F7F8; --label-strong:#FFFFFF;
+    --label-neutral:rgba(194,196,200,0.88); --label-alternative:rgba(174,176,182,0.61);
+    --label-assistive:rgba(174,176,182,0.28); --label-disable:rgba(152,155,162,0.16);
+    --bg-normal:#1B1C1E; --bg-alternative:#0F0F10; --bg-elevated:#1B1C1E;
+    --line-normal:rgba(112,115,124,0.32); --line-neutral:rgba(112,115,124,0.28); --line-alternative:rgba(112,115,124,0.22);
+    --line-solid-normal:#37383C; --line-solid-neutral:#333438; --line-solid-alternative:#2E2F33;
+    --fill-normal:rgba(112,115,124,0.22); --fill-strong:rgba(112,115,124,0.28); --fill-alternative:rgba(112,115,124,0.12);
+    --status-positive:#1DD45A; --status-cautionary:#FFA938; --status-negative:#FF6363;
+    --accent-red-orange:#FF7B2E; --accent-cyan:#28D0ED;
+    /* 페이지 헬퍼 */
     --primary-rgb:20,195,145;
     --bg-rgb:27,28,30;
     --max-gold:#F6C66B;      /* max.png 골드 에셋 매칭 — 데코 스파클 전용 */
@@ -37,12 +61,12 @@
   /* ═══ HERO ═══ */
   .hero{
     position:relative; overflow:hidden;
-    min-height:210px;
+    min-height:194px;
     display:flex; flex-direction:column; justify-content:flex-end;
   }
   .hero-bg{
     position:absolute; inset:0;
-    background:url('images/hero-ko.webp') no-repeat center 14%;
+    background:url('images/hero-ko.webp') no-repeat center top;
     background-size:cover;
     opacity:0.55;
     transform:scale(1.02);
@@ -92,7 +116,7 @@
   .hero-copy{
     position:relative; z-index:2;
     text-align:center;
-    padding:0 24px 22px;
+    padding:0 24px 30px;
   }
   .hero-title{
     font-size:34px; font-weight:800; letter-spacing:-0.03em; line-height:1.12;
@@ -256,16 +280,17 @@
 
   /* ═══ DESKTOP (≥769px) ═══ */
   @media (min-width:769px){
-    .frame{ max-width:560px; padding-bottom:56px; padding-top:8px; }
-    .hero{ min-height:208px; border-radius:0 0 24px 24px; }
+    .frame{ max-width:560px; padding-bottom:24px; padding-top:0; }
+    .hero{ min-height:168px; border-radius:0 0 24px 24px; }
     .hero-title{ font-size:36px; } .hero-title .num{ font-size:48px; }
     .hero-sub{ font-size:14px; max-width:380px; }
-    .plan{ margin:14px 0 0; padding:26px 24px 22px; }
-    .opts{ margin:18px 0 0; }
+    .plan{ margin:12px 0 0; padding:22px 24px 18px; }
+    .features{ gap:11px; }
+    .opts{ margin:14px 0 0; }
 
     /* CTA: 데스크탑은 흐름 안에서 인라인 */
     .cta-bar{
-      position:static; padding:0; margin:22px 0 0;
+      position:static; padding:0; margin:16px 0 0;
       background:none; backdrop-filter:none; -webkit-backdrop-filter:none; border-top:none;
     }
     .cta-bar::before{ display:none; }
@@ -276,9 +301,6 @@
 <body>
 
 <div class="particles" id="pts"></div>
-
-<div class="app">
-  <mirai-sidebar></mirai-sidebar>
 
   <main class="frame">
 
@@ -300,7 +322,7 @@
 
       <div class="hero-copy ai d1">
         <h1 class="hero-title"><span class="num">100,000+</span><span data-ko="인기 캐릭터" data-en="Popular Characters">인기 캐릭터</span></h1>
-        <p class="hero-sub" data-ko="무한한 대화에 참여하고, 깊이 있는 이야기와 복잡한 설정을 탐험해 보세요." data-en="Join limitless conversations and dive into deep stories with rich, intricate settings.">무한한 대화에 참여하고, 깊이 있는 이야기와 복잡한 설정을 탐험해 보세요.</p>
+        <p class="hero-sub" data-ko="무제한 대화에 참여하고, 깊이 있게 탐험해 보세요." data-en="Join unlimited conversations and explore deeper.">무제한 대화에 참여하고, 깊이 있게 탐험해 보세요.</p>
       </div>
     </section>
 
@@ -324,7 +346,7 @@
         </li>
         <li class="feat">
           <span class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></span>
-          <span class="feat-text" data-ko="확장된 기억 (+100턴)" data-en="Extended Memory (+100 turns)">확장된 기억 (+100턴)</span>
+          <span class="feat-text" data-ko="대화를 더 오래 기억 (+100턴)" data-en="Remembers More (+100 turns)">대화를 더 오래 기억 (+100턴)</span>
           <span class="feat-stat stat-up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg></span>
         </li>
         <li class="feat">
@@ -371,7 +393,7 @@
         <span class="opt-ribbon" data-ko="🔥 25% 할인" data-en="🔥 25% OFF">🔥 25% 할인</span>
         <span class="opt-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
         <span class="opt-period" data-ko="연간" data-en="Annual">연간</span>
-        <span class="opt-priceline"><span class="opt-price">$30</span><small data-ko="/월" data-en="/mo">/월</small></span>
+        <span class="opt-priceline"><span class="opt-price">$30.00</span><small data-ko="/월" data-en="/mo">/월</small></span>
         <span class="opt-orig">$39.99</span>
       </button>
       <button class="opt" data-period="monthly" onclick="selectPlan('monthly')">
@@ -391,9 +413,7 @@
     </div>
 
   </main>
-</div>
 
-<script src="../shared/components.js" defer></script>
 <script>
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   window.scrollTo(0, 0);
@@ -417,12 +437,12 @@
   /* ── 다국어 (개발자 확인용 KO/EN 토글) ── */
   const I18N = {
     ko: {
-      cta:  { annual:'월 $30 구독하기', monthly:'월 $39.99 구독하기' },
+      cta:  { annual:'월 $30.00 구독하기', monthly:'월 $39.99 구독하기' },
       note: '매월 자동 갱신 · 언제든 취소 가능',
       toast:{ annual:'MAX 연간 (연 $360) 구독 — 결제 연동 예정', monthly:'MAX 월간 (월 $39.99) 구독 — 결제 연동 예정' }
     },
     en: {
-      cta:  { annual:'Subscribe · $30/mo', monthly:'Subscribe · $39.99/mo' },
+      cta:  { annual:'Subscribe · $30.00/mo', monthly:'Subscribe · $39.99/mo' },
       note: 'Auto-renews monthly · Cancel anytime',
       toast:{ annual:'MAX Annual ($360/yr) — payment integration pending', monthly:'MAX Monthly ($39.99/mo) — payment integration pending' }
     }
