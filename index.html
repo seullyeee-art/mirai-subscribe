@@ -23,7 +23,6 @@
     --label-neutral:rgba(194,196,200,0.88); --label-alternative:rgba(174,176,182,0.61);
     --label-assistive:rgba(174,176,182,0.28);
     --bg-normal:#1B1C1E;
-    --line-alternative:rgba(112,115,124,0.22);
     --line-solid-normal:#37383C; --line-solid-neutral:#333438;
     --status-negative:#FF6363;
     --accent-red-orange:#FF7B2E;
@@ -47,7 +46,7 @@
     width:100%; max-width:600px;
     margin:0 auto;
     min-height:100dvh;
-    padding-bottom:140px;
+    padding-bottom:230px;
   }
 
   .hero{
@@ -172,15 +171,15 @@
 
   .opts{
     display:grid; grid-template-columns:1fr 1fr; gap:12px;
-    margin:18px 16px 0;
+    margin:0 0 12px;
   }
   .opt{
     position:relative; text-align:left;
-    padding:18px 16px 16px; border-radius:16px;
+    padding:14px 16px 12px; border-radius:16px;
     background:linear-gradient(160deg, rgba(112,115,124,0.10), rgba(112,115,124,0.03));
     border:1.5px solid var(--line-solid-neutral);
     cursor:pointer; transition:border-color 0.18s ease, background 0.18s ease, transform 0.1s ease;
-    display:flex; flex-direction:column; gap:6px;
+    display:flex; flex-direction:column; gap:4px;
   }
   .opt:active{ transform:scale(0.985); }
   .opt.selected{
@@ -198,10 +197,10 @@
     background:linear-gradient(135deg, var(--accent-red-orange), var(--status-negative));
     box-shadow:0 3px 10px rgba(255,99,99,0.35);
   }
-  .opt-period{ font-size:14px; font-weight:700; color:var(--label-strong); }
+  .opt-period{ font-size:13px; font-weight:700; color:var(--label-strong); }
   .opt-priceline{ display:flex; align-items:baseline; gap:6px; }
-  .opt-price{ font-size:24px; font-weight:900; letter-spacing:-0.03em; color:var(--label-strong); }
-  .opt-price small{ font-size:13px; font-weight:600; color:var(--label-neutral); }
+  .opt-price{ font-size:20px; font-weight:900; letter-spacing:-0.03em; color:var(--label-strong); }
+  .opt-price small{ font-size:12px; font-weight:600; color:var(--label-neutral); }
   .opt-orig{ font-size:12px; font-weight:600; color:var(--label-alternative); text-decoration:line-through; }
   .opt-orig.hide{ visibility:hidden; }
   .opt-tick{
@@ -214,19 +213,18 @@
   .opt.selected .opt-tick{ background:var(--primary-normal); border-color:var(--primary-normal); color:#fff; }
   .opt-tick svg{ width:12px; height:12px; }
 
-  .cta-bar{
+  .purchase{
     position:fixed; left:0; right:0; bottom:0; z-index:120;
-    padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+    padding:16px 16px calc(14px + env(safe-area-inset-bottom));
     background:rgba(var(--bg-rgb),0.94);
     backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
-    border-top:1px solid var(--line-alternative);
   }
-  .cta-bar::before{
-    content:''; position:absolute; left:0; right:0; top:-24px; height:24px;
+  .purchase::before{
+    content:''; position:absolute; left:0; right:0; top:-28px; height:28px;
     background:linear-gradient(180deg, rgba(var(--bg-rgb),0), rgba(var(--bg-rgb),0.94));
     pointer-events:none;
   }
-  .cta-inner{ max-width:600px; margin:0 auto; }
+  .purchase-inner{ max-width:600px; margin:0 auto; }
   .cta{
     width:100%; height:48px; border-radius:12px;
     background:linear-gradient(116deg, var(--primary-normal), var(--primary-heavy));
@@ -256,19 +254,13 @@
   .d1{animation-delay:.05s}.d2{animation-delay:.12s}.d3{animation-delay:.19s}.d4{animation-delay:.26s}
 
   @media (min-width:769px){
-    .frame{ max-width:560px; padding-bottom:24px; padding-top:0; }
+    .frame{ max-width:560px; padding-bottom:230px; padding-top:0; }
     .hero{ min-height:210px; border-radius:0 0 24px 24px; }
     .hero-title{ font-size:36px; } .hero-title .num{ font-size:48px; }
     .hero-sub{ font-size:14px; max-width:380px; }
     .plan{ margin:12px 0 0; padding:14px 24px 18px; }
     .cmp-label{ font-size:15px; }
-    .opts{ margin:14px 0 0; }
-    .cta-bar{
-      position:static; padding:0; margin:16px 0 0;
-      background:none; backdrop-filter:none; -webkit-backdrop-filter:none; border-top:none;
-    }
-    .cta-bar::before{ display:none; }
-    .cta-inner{ max-width:none; }
+    .purchase-inner{ max-width:560px; }
   }
 </style>
 </head>
@@ -355,30 +347,29 @@
       </div>
     </section>
 
-    <section class="opts ai d3">
-      <button class="opt selected" data-period="annual" onclick="selectPlan('annual')">
-        <span class="opt-ribbon" data-ko="🔥 25% 할인" data-en="🔥 25% OFF">🔥 25% 할인</span>
-        <span class="opt-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-        <span class="opt-period" data-ko="연간" data-en="Annual">연간</span>
-        <span class="opt-priceline"><span class="opt-price">$30.00</span><small data-ko="/월" data-en="/mo">/월</small></span>
-        <span class="opt-orig">$39.99</span>
-      </button>
-      <button class="opt" data-period="monthly" onclick="selectPlan('monthly')">
-        <span class="opt-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-        <span class="opt-period" data-ko="월간" data-en="Monthly">월간</span>
-        <span class="opt-priceline"><span class="opt-price">$39.99</span><small data-ko="/월" data-en="/mo">/월</small></span>
-        <span class="opt-orig hide">$39.99</span>
-      </button>
-    </section>
-
-    <div class="cta-bar ai d4">
-      <div class="cta-inner">
-        <button class="cta" id="ctaBtn" onclick="subscribe()">월 $30 구독하기</button>
-        <p class="cta-note" id="ctaNote">매월 자동 갱신 · 언제든 취소 가능</p>
-      </div>
-    </div>
-
   </main>
+
+  <div class="purchase">
+    <div class="purchase-inner">
+      <section class="opts">
+        <button class="opt selected" data-period="annual" onclick="selectPlan('annual')">
+          <span class="opt-ribbon" data-ko="🔥 25% 할인" data-en="🔥 25% OFF">🔥 25% 할인</span>
+          <span class="opt-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span class="opt-period" data-ko="연간" data-en="Annual">연간</span>
+          <span class="opt-priceline"><span class="opt-price">$30.00</span><small data-ko="/월" data-en="/mo">/월</small></span>
+          <span class="opt-orig">$39.99</span>
+        </button>
+        <button class="opt" data-period="monthly" onclick="selectPlan('monthly')">
+          <span class="opt-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span class="opt-period" data-ko="월간" data-en="Monthly">월간</span>
+          <span class="opt-priceline"><span class="opt-price">$39.99</span><small data-ko="/월" data-en="/mo">/월</small></span>
+          <span class="opt-orig hide">$39.99</span>
+        </button>
+      </section>
+      <button class="cta" id="ctaBtn" onclick="subscribe()">월 $30 구독하기</button>
+      <p class="cta-note" id="ctaNote">매월 자동 갱신 · 언제든 취소 가능</p>
+    </div>
+  </div>
 
 <script>
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
